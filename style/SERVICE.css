@@ -121,6 +121,9 @@ ul li a:hover {
 .link {
   text-align: center;
 }
+h1{
+  color: #f8f9fa;
+}
 
 /* Responsive */
 @media (max-width: 768px) {

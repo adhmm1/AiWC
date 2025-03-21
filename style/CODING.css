@@ -1,0 +1,248 @@
+/* CODING.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding-top: 5%;
+  padding-bottom: 40px;
+  background-color: #000;
+  overflow-x: hidden;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 10001;
+}
+.navbar {
+  height: 30px;
+  margin: 10px;
+  display: flex;
+}
+.menu {
+  display: flex;
+  width: 100vw;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+.menu.open {
+  display: flex;
+  /* عند الضغط على زر ☰ تظهر القائمة */
+}
+.icon {
+  width: 200px;
+  display: flex;
+  height: 70px;
+}
+.logo {
+  color: #8a2be2;
+  font-size: 35px;
+  font-family: Arial;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-top: 5px;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul li {
+  list-style: none;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+  padding-bottom: 15px;
+}
+ul li a:hover {
+  color: #935ccd;
+}
+.main {
+  width: 100vw;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(../img/CoverAi.png);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  margin: 0;
+}
+.content {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+  color: #fff;
+  position: relative;
+  padding-top: 80px;
+}
+h1{
+  text-align: center;
+}
+span{
+  text-align: center;
+  color: #935ccd;
+}
+.chat-container {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+}
+.chat-box {
+  height: 400px;
+  overflow-y: auto;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #9b59b6;
+  border-radius: 5px;
+  background: #14021a8f;
+  text-align: left;
+}
+.message {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.user-message {
+  background: rgba(138, 43, 226, 0.2);
+  text-align: right;
+  margin-left: 20%;
+}
+.bot-message {
+  background: rgba(255, 255, 255, 0.1);
+  margin-right: 20%;
+}
+.chat-input {
+  display: flex;
+  gap: 10px;
+}
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #9b59b6;
+  border-radius: 5px;
+  background: #1c0525;
+  color: white;
+}
+.chat-input button {
+  padding: 10px 20px;
+  background: #8a2be2;
+  font-size: 60%;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+.chat-input button:hover {
+  background: #6a1cb7;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .menu {
+    position: relative;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100vh);
+    transition: transform 0.6s ease-in-out;
+    
+}
+
+
+.menu.open {
+    transform: translateY(0);
+    animation: fadeInOpacity 0.6s forwards;
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; 
+
+}
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.menu ul {
+  flex-direction: column;
+  text-align: center;
+}
+  ul li {
+    padding: 18px 0;
+    font-size: 35px;
+  }
+  .content {
+    width: 90%;
+    padding-top: 60px;
+  }
+  .chat-container {
+    width: 100%;
+    padding: 15px;
+  }
+  .chat-box {
+    height: 300px;
+    padding: 15px;
+  }
+  .chat-input button {
+    width: 20%;
+  }
+}
+@media (max-width: 480px) {
+  ul li {
+    font-size: 25px;
+    padding: 10px 0;
+  }
+  .chat-input input,
+  .chat-input button {
+    font-size: 14px;
+  }
+  .chat-box {
+    height: 250px;
+  }
+}

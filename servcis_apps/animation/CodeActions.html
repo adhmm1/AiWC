@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern CSS Animation Effects</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Global Reset & Base Styles */
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f7f9fc, #e0e7f5);
+      color: #333;
+      line-height: 1.5;
+      background-image: url(../../img/CoverAi.png)
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Global Back Button */
+    .global-back-btn {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 6px 10px;
+      height: 10px 10px;
+      background-color: #edcaf7;
+      color: rgb(50, 4, 63);
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      z-index: 1100;
+      transition: background-color 0.3s;
+    }
+    .global-back-btn:hover { background-color: #b68fed; }
+
+    /* Main Menu */
+    .main-menu {
+      text-align: center;
+      padding: 20px 20px 40px;
+    }
+    .main-menu h2 {
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #460a30;
+    }
+    .main-menu button {
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #572665;
+      color: white;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .main-menu button:hover { 
+      background-color: #814b90;
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Sections */
+    .section {
+      display: none;
+      animation: slideIn 0.8s ease-out;
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .section.active { display: block; }
+    .section h2 {
+      font-size: 2rem;
+      text-align: center;
+      color: #19226c;
+      margin-bottom: 20px;
+    }
+    .section p {
+      font-size: 1.1rem;
+      text-align: center;
+      margin: 0 auto 20px;
+      max-width: 800px;
+    }
+    .back-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 4px 8px;
+      background-color: #451a51;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.8rem;
+      transition: background-color 0.3s;
+    }
+    .back-btn:hover { background-color: #6e3c7c; }
+
+    /* Text Section */
+    .text-section .input-area { text-align: center; margin-bottom: 20px; }
+    .text-section input[type="text"] {
+      width: 80%;
+      max-width: 500px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .text-section button.action-btn {
+      padding: 10px 10px;
+      max-height: 20vh;
+      font-size: 1rem;
+      background-color: #b7b7b798;
+      border: none;
+      color: rgb(0, 0, 0);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .text-section button.action-btn:hover { background-color: #a0a0ba; color: #000000;}
+    .text-section .effect-select,
+    .button-section .effect-select,
+    .image-section .effect-select { text-align: center; margin: 20px 0; }
+    .text-section select,
+    .button-section select,
+    .image-section select {
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .text-section .output { text-align: center; margin: 20px 0; font-size: 1.2rem; min-height: 40px; }
+    
+    /* Button Section */
+    .button-section .preview-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      background-color: #999999;
+      border: none;
+      color: rgb(255, 255, 255);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    
+    /* Image Section */
+    .image-section .img-preview {
+      display: block;
+      margin: 20px auto;
+      max-width: 300px;
+      border-radius: 10px;
+      transition: transform 0.4s;
+    }
+
+    /* Code Box */
+    .code-box {
+      background-color: #282c34;
+      color: #eee;
+      padding: 15px;
+      border-radius: 8px;
+      font-family: "Courier New", monospace;
+      font-size: 0.9rem;
+      overflow-x: auto;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      position: relative;
+    }
+    .code-box button.copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 5px 5px;
+      background-color: #ffffff;
+      border: none;
+      color: rgb(43, 42, 42);
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: background-color 0.3s;
+    }
+    .code-box button.copy-btn:hover { background-color: #cec6ff; }
+
+    /* Slide In Animation */
+    @keyframes slideIn {
+      0% { transform: translateY(100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    /* 20 Unique Text Animation Effects */
+    @keyframes textFade { 0% { opacity: 0; } 100% { opacity: 1; } }
+    .effect-text-fade { animation: textFade 1s ease-in-out; }
+    @keyframes textSlide { 0% { transform: translateX(-100px); opacity: 0; } 100% { transform: translateX(0); opacity: 1; } }
+    .effect-text-slide { animation: textSlide 1s ease-in-out; }
+    @keyframes textRotate { 0% { transform: rotate(0deg); opacity: 0; } 100% { transform: rotate(360deg); opacity: 1; } }
+    .effect-text-rotate { animation: textRotate 1s ease-in-out; }
+    @keyframes textScale { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    .effect-text-scale { animation: textScale 1s ease-in-out; }
+    @keyframes textBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .effect-text-bounce { animation: textBounce 1s ease-out; }
+    @keyframes textBlink { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; } }
+    .effect-text-blink { animation: textBlink 1s step-end infinite; }
+    @keyframes textShake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+    .effect-text-shake { animation: textShake 0.5s ease-in-out; }
+    @keyframes textSkew { 0% { transform: skewX(0deg); } 100% { transform: skewX(20deg); } }
+    .effect-text-skew { animation: textSkew 1s ease-in-out; }
+    @keyframes textColorChange { 0% { color: #333; } 50% { color: #4CAF50; } 100% { color: #333; } }
+    .effect-text-colorchange { animation: textColorChange 2s ease-in-out infinite; }
+    @keyframes textSlideDown { 0% { transform: translateY(-100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    .effect-text-slidedown { animation: textSlideDown 1s ease-in-out; }
+    @keyframes textSlideUp { 0% { transform: translateY(100px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    .effect-text-slideup { animation: textSlideUp 1s ease-in-out; }
+    @keyframes textZoomIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+    .effect-text-zoomin { animation: textZoomIn 1s ease-in-out; }
+    @keyframes textDropIn { 0% { transform: translateY(-200px); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+    .effect-text-dropin { animation: textDropIn 1s ease-in-out; }
+    .effect-text-typewriter { 
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid;
+      animation: textTypewriter 3s steps(20) infinite;
+    }
+    @keyframes textTypewriter { from { width: 0; } to { width: 100%; } }
+    @keyframes textFlash { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+    .effect-text-flash { animation: textFlash 1s ease-in-out infinite; }
+    @keyframes textGlow { 0% { text-shadow: none; } 50% { text-shadow: 0 0 10px #4CAF50; } 100% { text-shadow: none; } }
+    .effect-text-glow { animation: textGlow 2s ease-in-out infinite; }
+    @keyframes textWobble { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+    .effect-text-wobble { animation: textWobble 1s ease-in-out; }
+    @keyframes textJiggle { 0% { transform: rotate(0deg); } 25% { transform: rotate(5deg); } 50% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } 100% { transform: rotate(0deg); } }
+    .effect-text-jiggle { animation: textJiggle 0.5s ease-in-out; }
+    @keyframes textSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .effect-text-spin { animation: textSpin 1s ease-in-out; }
+
+    /* 20 Unique Button Animation Effects */
+    @keyframes buttonBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .effect-button-bounce { animation: buttonBounce 1s ease-out infinite; }
+    @keyframes buttonGlow { 0% { box-shadow: 0 0 0px #4CAF50; } 50% { box-shadow: 0 0 20px #4CAF50; } 100% { box-shadow: 0 0 0px #4CAF50; } }
+    .effect-button-glow { animation: buttonGlow 2s ease-in-out infinite; }
+    @keyframes buttonShake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+    .effect-button-shake { animation: buttonShake 0.5s ease-in-out; }
+    @keyframes buttonPulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    .effect-button-pulse { animation: buttonPulse 1s ease-in-out infinite; }
+    @keyframes buttonWobble { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+    .effect-button-wobble { animation: buttonWobble 1s ease-in-out; }
+    @keyframes buttonSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .effect-button-spin { animation: buttonSpin 1s ease-in-out; }
+    @keyframes buttonFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(180deg); } }
+    .effect-button-flip { animation: buttonFlip 0.5s ease-in-out; }
+    @keyframes buttonSlide { 0% { transform: translateX(-100px); } 100% { transform: translateX(0); } }
+    .effect-button-slide { animation: buttonSlide 0.5s ease-in-out; }
+    @keyframes buttonZoom { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+    .effect-button-zoom { animation: buttonZoom 0.5s ease-in-out; }
+    @keyframes buttonRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(15deg); } }
+    .effect-button-rotate { animation: buttonRotate 0.5s ease-in-out; }
+    @keyframes buttonBounceOut { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+    .effect-button-bounceout { animation: buttonBounceOut 1s ease-out; }
+    @keyframes buttonRubber { 0% { transform: scale(1); } 50% { transform: scale(1.2, 0.9); } 100% { transform: scale(1); } }
+    .effect-button-rubber { animation: buttonRubber 0.5s ease-in-out; }
+    @keyframes buttonSwing { 0% { transform: rotate(0deg); } 50% { transform: rotate(10deg); } 100% { transform: rotate(0deg); } }
+    .effect-button-swing { animation: buttonSwing 0.5s ease-in-out; }
+    @keyframes buttonJello { 0% { transform: scale(1); } 25% { transform: scale(1.1, 0.9); } 50% { transform: scale(0.9, 1.1); } 75% { transform: scale(1.05, 0.95); } 100% { transform: scale(1); } }
+    .effect-button-jello { animation: buttonJello 0.8s ease-in-out; }
+    @keyframes buttonShimmer { 0% { background-position: -200px; } 100% { background-position: 200px; } }
+    .effect-button-shimmer { animation: buttonShimmer 2s linear infinite; }
+    @keyframes buttonJump { 0% { transform: translateY(0); } 50% { transform: translateY(-15px); } 100% { transform: translateY(0); } }
+    .effect-button-jump { animation: buttonJump 0.5s ease-in-out; }
+    @keyframes buttonSqueeze { 0% { transform: scaleX(1); } 50% { transform: scaleX(0.8); } 100% { transform: scaleX(1); } }
+    .effect-button-squeeze { animation: buttonSqueeze 0.5s ease-in-out; }
+    @keyframes buttonExpand { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+    .effect-button-expand { animation: buttonExpand 0.5s ease-in-out; }
+    @keyframes buttonContract { 0% { transform: scale(1); } 100% { transform: scale(0.8); } }
+    .effect-button-contract { animation: buttonContract 0.5s ease-in-out; }
+
+    /* 20 Unique Image Animation Effects (Applied immediately) */
+    @keyframes imageZoom { 0% { transform: scale(1); } 100% { transform: scale(1.2); } }
+    .effect-image-zoom { animation: imageZoom 0.5s forwards; }
+    @keyframes imageRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(15deg); } }
+    .effect-image-rotate { animation: imageRotate 0.5s forwards; }
+    @keyframes imageFlip { 0% { transform: rotateY(0deg); } 100% { transform: rotateY(180deg); } }
+    .effect-image-flip { animation: imageFlip 0.5s forwards; }
+    .effect-image-grayscale { transition: filter 0.5s; filter: grayscale(100%); }
+    @keyframes imageSepia { 0% { filter: sepia(0); } 100% { filter: sepia(100%); } }
+    .effect-image-sepia { animation: imageSepia 0.5s forwards; }
+    @keyframes imageBlur { 0% { filter: blur(0); } 100% { filter: blur(3px); } }
+    .effect-image-blur { animation: imageBlur 0.5s forwards; }
+    @keyframes imageContrast { 0% { filter: contrast(100%); } 100% { filter: contrast(150%); } }
+    .effect-image-contrast { animation: imageContrast 0.5s forwards; }
+    @keyframes imageBrighten { 0% { filter: brightness(100%); } 100% { filter: brightness(130%); } }
+    .effect-image-brighten { animation: imageBrighten 0.5s forwards; }
+    @keyframes imageSaturate { 0% { filter: saturate(100%); } 100% { filter: saturate(150%); } }
+    .effect-image-saturate { animation: imageSaturate 0.5s forwards; }
+    @keyframes imageInvert { 0% { filter: invert(0); } 100% { filter: invert(100%); } }
+    .effect-image-invert { animation: imageInvert 0.5s forwards; }
+    @keyframes imageSkew { 0% { transform: skew(0deg); } 100% { transform: skew(20deg); } }
+    .effect-image-skew { animation: imageSkew 0.5s forwards; }
+    @keyframes imageTilt { 0% { transform: rotate(0deg); } 100% { transform: rotate(10deg); } }
+    .effect-image-tilt { animation: imageTilt 0.5s forwards; }
+    @keyframes imageZoomOut { 0% { transform: scale(1); } 100% { transform: scale(0.8); } }
+    .effect-image-zoomout { animation: imageZoomOut 0.5s forwards; }
+    @keyframes imageSlideIn { 0% { transform: translateX(-100%); } 100% { transform: translateX(0); } }
+    .effect-image-slidein { animation: imageSlideIn 0.5s forwards; }
+    @keyframes imageSlideOut { 0% { transform: translateX(0); } 100% { transform: translateX(100%); } }
+    .effect-image-slideout { animation: imageSlideOut 0.5s forwards; }
+    @keyframes imageWobble { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
+    .effect-image-wobble { animation: imageWobble 0.5s forwards; }
+    @keyframes imagePulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+    .effect-image-pulse { animation: imagePulse 0.5s forwards; }
+    @keyframes imageSpin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .effect-image-spin { animation: imageSpin 1s forwards; }
+
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      .main-menu button { font-size: 1rem; padding: 10px 20px; }
+      .section h2 { font-size: 1.8rem; }
+      .section p { font-size: 1rem; padding: 0 10px; }
+      .code-box { font-size: 0.8rem; padding: 10px; }
+      .global-back-btn { font-size: 0.9rem; padding: 6px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Global Back Button -->
+  <button class="global-back-btn" onclick="window.history.back()"><img src="back.png" alt="back"; height="13px";width="20px"; ></button>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Main Menu -->
+    <div id="mainMenu" class="section active">
+      <div class="main-menu">
+        <h2>Select Actions category.</h2>
+      </br></br>
+        <button onclick="showSection('textSection')">Text</button>
+        <button onclick="showSection('buttonSection')">Button</button>
+        <button onclick="showSection('imageSection')">Image</button>
+      </div>
+    </div>
+
+    <!-- Text Section -->
+    <div id="textSection" class="section text-section">
+      <button class="back-btn" onclick="showMainMenu()">Back</button>
+      <h2>Text Section</h2>
+      <div class="input-area">
+        <input type="text" id="textInput" placeholder="Enter your text here" />
+        
+        <button class="action-btn" onclick="showText()"><img src="enter.png" alt="enter" style="height: 18px; width: 25px;"></button>
+      </div>
+      <div class="effect-select">
+        <label for="textEffect">Select Text Effect:</label>
+        <select id="textEffect" onchange="applyTextEffect()">
+          <!-- 20 unique options -->
+          <option value="effect-text-fade">Fade In</option>
+          <option value="effect-text-slide">Slide In</option>
+          <option value="effect-text-rotate">Rotate</option>
+          <option value="effect-text-scale">Scale</option>
+          <option value="effect-text-bounce">Bounce</option>
+          <option value="effect-text-blink">Blink</option>
+          <option value="effect-text-shake">Shake</option>
+          <option value="effect-text-skew">Skew</option>
+          <option value="effect-text-colorchange">Color Change</option>
+          <option value="effect-text-slidedown">Slide Down</option>
+          <option value="effect-text-slideup">Slide Up</option>
+          <option value="effect-text-zoomin">Zoom In</option>
+          <option value="effect-text-dropin">Drop In</option>
+          <option value="effect-text-typewriter">Typewriter</option>
+          <option value="effect-text-flash">Flash</option>
+          <option value="effect-text-glow">Glow</option>
+          <option value="effect-text-wobble">Wobble</option>
+          <option value="effect-text-jiggle">Jiggle</option>
+          <option value="effect-text-spin">Spin</option>
+        </select>
+    </br></br></br>
+      </div>
+      <div class="output" id="textOutput"></div>
+    </br>
+      <h4>Action Code:</h4>
+      <div class="code-box" id="textCodeBox">
+<pre id="textCode">
+/* Fade In Effect Example for text:
+   "Your sample text here"
+*/
+@keyframes textFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.effect-text-fade { animation: textFade 1s ease-in-out; }
+</pre>
+        <button class="copy-btn" onclick="copyCode('textCode')"><img src="copy.png" alt="copy" style="height: 20px;width: 20px;"></button>
+      </div>
+    </div>
+
+    <!-- Button Section -->
+    <div id="buttonSection" class="section button-section">
+      <button class="back-btn" onclick="showMainMenu()">Back</button>
+      <h2>Button Section</h2>
+      <div class="effect-select">
+        <label for="buttonEffect">Select Button Effect:</label>
+        <select id="buttonEffect" onchange="applyButtonEffect()">
+          <!-- 20 unique options -->
+          <option value="effect-button-bounce">Bounce</option>
+          <option value="effect-button-glow">Glow</option>
+          <option value="effect-button-shake">Shake</option>
+          <option value="effect-button-pulse">Pulse</option>
+          <option value="effect-button-wobble">Wobble</option>
+          <option value="effect-button-spin">Spin</option>
+          <option value="effect-button-flip">Flip</option>
+          <option value="effect-button-slide">Slide</option>
+          <option value="effect-button-zoom">Zoom</option>
+          <option value="effect-button-rotate">Rotate</option>
+          <option value="effect-button-bounceout">Bounce Out</option>
+          <option value="effect-button-rubber">Rubber Band</option>
+          <option value="effect-button-swing">Swing</option>
+          <option value="effect-button-jello">Jello</option>
+          <option value="effect-button-shimmer">Shimmer</option>
+          <option value="effect-button-jump">Jump</option>
+          <option value="effect-button-squeeze">Squeeze</option>
+          <option value="effect-button-expand">Expand</option>
+          <option value="effect-button-contract">Contract</option>
+        </select>
+    </br></br></br>
+      </div>
+      <button class="preview-btn" id="previewButton" onclick="applyButtonEffect()"> Button</button>
+    </br>
+      <h4>Animation Code:</h4>
+      <div class="code-box" id="buttonCodeBox">
+<pre id="buttonCode">
+/* Bounce Effect Example */
+@keyframes buttonBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.effect-button-bounce { animation: buttonBounce 1s ease-out infinite; }
+</pre>
+        <button class="copy-btn" onclick="copyCode('buttonCode')"><img src="copy.png" alt="copy" style="height: 20px;width: 20px;"></button>
+      </div>
+    </div>
+
+    <!-- Image Section -->
+    <div id="imageSection" class="section image-section">
+      <button class="back-btn" onclick="showMainMenu()">Back</button>
+      <h2>Image Section</h2>
+      <div class="effect-select">
+        <label for="imageEffect">Select Image Effect:</label>
+        <select id="imageEffect" onchange="applyImageEffect()">
+          <!-- 20 unique options -->
+          <option value="effect-image-zoom">Zoom</option>
+          <option value="effect-image-rotate">Rotate</option>
+          <option value="effect-image-flip">Flip</option>
+          <option value="effect-image-grayscale">Grayscale</option>
+          <option value="effect-image-sepia">Sepia</option>
+          <option value="effect-image-blur">Blur</option>
+          <option value="effect-image-contrast">Contrast</option>
+          <option value="effect-image-brighten">Brighten</option>
+          <option value="effect-image-saturate">Saturate</option>
+          <option value="effect-image-invert">Invert</option>
+          <option value="effect-image-skew">Skew</option>
+          <option value="effect-image-tilt">Tilt</option>
+          <option value="effect-image-zoomout">Zoom Out</option>
+          <option value="effect-image-slidein">Slide In</option>
+          <option value="effect-image-slideout">Slide Out</option>
+          <option value="effect-image-wobble">Wobble</option>
+          <option value="effect-image-pulse">Pulse</option>
+          <option value="effect-image-spin">Spin</option>
+        </select>
+    </br></br>
+      </div>
+      <img src="imgg.png" alt="Static Image" id="previewImage" class="img-preview" />
+    </br>
+      <h4>Animation Code:</h4>
+      <div class="code-box" id="imageCodeBox">
+<pre id="imageCode">
+/* Zoom Effect Example */
+@keyframes imageZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+.effect-image-zoom { animation: imageZoom 0.5s forwards; }
+</pre>
+        <button class="copy-btn" onclick="copyCode('imageCode')">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- JavaScript -->
+  <script>
+    // مصفوفات فئات التأثيرات الفريدة لكل قسم
+    const textEffects = [
+      "effect-text-fade", "effect-text-slide", "effect-text-rotate", "effect-text-scale",
+      "effect-text-bounce", "effect-text-blink", "effect-text-shake", "effect-text-skew",
+      "effect-text-colorchange", "effect-text-slidedown", "effect-text-slideup",
+      "effect-text-zoomin", "effect-text-dropin", "effect-text-typewriter", "effect-text-flash",
+      "effect-text-glow", "effect-text-wobble", "effect-text-jiggle", "effect-text-spin"
+    ];
+    const buttonEffects = [
+      "effect-button-bounce", "effect-button-glow", "effect-button-shake", "effect-button-pulse",
+      "effect-button-wobble", "effect-button-spin", "effect-button-flip", "effect-button-slide",
+      "effect-button-zoom", "effect-button-rotate", "effect-button-bounceout", "effect-button-rubber",
+      "effect-button-swing", "effect-button-jello", "effect-button-shimmer", "effect-button-jump",
+      "effect-button-squeeze", "effect-button-expand", "effect-button-contract"
+    ];
+    const imageEffects = [
+      "effect-image-zoom", "effect-image-rotate", "effect-image-flip", "effect-image-grayscale",
+      "effect-image-sepia", "effect-image-blur", "effect-image-contrast", "effect-image-brighten",
+      "effect-image-saturate", "effect-image-invert", "effect-image-skew", "effect-image-tilt",
+      "effect-image-zoomout", "effect-image-slidein", "effect-image-slideout", "effect-image-wobble",
+      "effect-image-pulse", "effect-image-spin"
+    ];
+
+    function showMainMenu() {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById('mainMenu').classList.add('active');
+    }
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+    function showText() {
+      const input = document.getElementById('textInput').value || "Your sample text here";
+      const output = document.getElementById('textOutput');
+      output.textContent = input;
+      applyTextEffect();
+    }
+    function applyTextEffect() {
+      const effect = document.getElementById('textEffect').value;
+      const output = document.getElementById('textOutput');
+      // إزالة جميع فئات التأثيرات من النص
+      textEffects.forEach(cls => output.classList.remove(cls));
+      void output.offsetWidth;
+      output.classList.add(effect);
+      
+      let sampleText = document.getElementById('textInput').value || "Your sample text here";
+      switch(effect) {
+        case 'effect-text-fade':
+          document.getElementById('textCode').textContent =
+`/* Fade In Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textFade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.effect-text-fade { animation: textFade 1s ease-in-out; }`;
+          break;
+        case 'effect-text-slide':
+          document.getElementById('textCode').textContent =
+`/* Slide In Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textSlide {
+  0% { transform: translateX(-100px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.effect-text-slide { animation: textSlide 1s ease-in-out; }`;
+          break;
+        case 'effect-text-rotate':
+          document.getElementById('textCode').textContent =
+`/* Rotate Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textRotate {
+  0% { transform: rotate(0deg); opacity: 0; }
+  100% { transform: rotate(360deg); opacity: 1; }
+}
+.effect-text-rotate { animation: textRotate 1s ease-in-out; }`;
+          break;
+        case 'effect-text-scale':
+          document.getElementById('textCode').textContent =
+`/* Scale Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textScale {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.effect-text-scale { animation: textScale 1s ease-in-out; }`;
+          break;
+        case 'effect-text-bounce':
+          document.getElementById('textCode').textContent =
+`/* Bounce Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.effect-text-bounce { animation: textBounce 1s ease-out; }`;
+          break;
+        case 'effect-text-blink':
+          document.getElementById('textCode').textContent =
+`/* Blink Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textBlink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+.effect-text-blink { animation: textBlink 1s step-end infinite; }`;
+          break;
+        case 'effect-text-shake':
+          document.getElementById('textCode').textContent =
+`/* Shake Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.effect-text-shake { animation: textShake 0.5s ease-in-out; }`;
+          break;
+        case 'effect-text-skew':
+          document.getElementById('textCode').textContent =
+`/* Skew Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textSkew {
+  0% { transform: skewX(0deg); }
+  100% { transform: skewX(20deg); }
+}
+.effect-text-skew { animation: textSkew 1s ease-in-out; }`;
+          break;
+        case 'effect-text-colorchange':
+          document.getElementById('textCode').textContent =
+`/* Color Change Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textColorChange {
+  0% { color: #333; }
+  50% { color: #4CAF50; }
+  100% { color: #333; }
+}
+.effect-text-colorchange { animation: textColorChange 2s ease-in-out infinite; }`;
+          break;
+        case 'effect-text-slidedown':
+          document.getElementById('textCode').textContent =
+`/* Slide Down Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textSlideDown {
+  0% { transform: translateY(-100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.effect-text-slidedown { animation: textSlideDown 1s ease-in-out; }`;
+          break;
+        case 'effect-text-slideup':
+          document.getElementById('textCode').textContent =
+`/* Slide Up Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textSlideUp {
+  0% { transform: translateY(100px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.effect-text-slideup { animation: textSlideUp 1s ease-in-out; }`;
+          break;
+        case 'effect-text-zoomin':
+          document.getElementById('textCode').textContent =
+`/* Zoom In Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textZoomIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.effect-text-zoomin { animation: textZoomIn 1s ease-in-out; }`;
+          break;
+        case 'effect-text-dropin':
+          document.getElementById('textCode').textContent =
+`/* Drop In Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textDropIn {
+  0% { transform: translateY(-200px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.effect-text-dropin { animation: textDropIn 1s ease-in-out; }`;
+          break;
+        case 'effect-text-typewriter':
+          document.getElementById('textCode').textContent =
+`/* Typewriter Effect Example for text:
+   "${sampleText}"
+*/
+.effect-text-typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+  animation: textTypewriter 3s steps(20) infinite;
+}
+@keyframes textTypewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}`;
+          break;
+        case 'effect-text-flash':
+          document.getElementById('textCode').textContent =
+`/* Flash Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textFlash {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.effect-text-flash { animation: textFlash 1s ease-in-out infinite; }`;
+          break;
+        case 'effect-text-glow':
+          document.getElementById('textCode').textContent =
+`/* Glow Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textGlow {
+  0% { text-shadow: none; }
+  50% { text-shadow: 0 0 10px #4CAF50; }
+  100% { text-shadow: none; }
+}
+.effect-text-glow { animation: textGlow 2s ease-in-out infinite; }`;
+          break;
+        case 'effect-text-wobble':
+          document.getElementById('textCode').textContent =
+`/* Wobble Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textWobble {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.effect-text-wobble { animation: textWobble 1s ease-in-out; }`;
+          break;
+        case 'effect-text-jiggle':
+          document.getElementById('textCode').textContent =
+`/* Jiggle Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textJiggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+  75% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+.effect-text-jiggle { animation: textJiggle 0.5s ease-in-out; }`;
+          break;
+        case 'effect-text-spin':
+          document.getElementById('textCode').textContent =
+`/* Spin Effect Example for text:
+   "${sampleText}"
+*/
+@keyframes textSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.effect-text-spin { animation: textSpin 1s ease-in-out; }`;
+          break;
+        default:
+          document.getElementById('textCode').textContent = "/* Select a text effect to see the code */";
+      }
+    }
+    function applyButtonEffect() {
+      const effect = document.getElementById('buttonEffect').value;
+      const btn = document.getElementById('previewButton');
+      // إزالة جميع فئات التأثيرات الخاصة بالأزرار
+      buttonEffects.forEach(cls => btn.classList.remove(cls));
+      void btn.offsetWidth;
+      btn.classList.add(effect);
+      switch(effect) {
+        case 'effect-button-bounce':
+          document.getElementById('buttonCode').textContent =
+`/* Bounce Effect Example */
+@keyframes buttonBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.effect-button-bounce { animation: buttonBounce 1s ease-out infinite; }`;
+          break;
+        case 'effect-button-glow':
+          document.getElementById('buttonCode').textContent =
+`/* Glow Effect Example */
+@keyframes buttonGlow {
+  0% { box-shadow: 0 0 0px #4CAF50; }
+  50% { box-shadow: 0 0 20px #4CAF50; }
+  100% { box-shadow: 0 0 0px #4CAF50; }
+}
+.effect-button-glow { animation: buttonGlow 2s ease-in-out infinite; }`;
+          break;
+        case 'effect-button-shake':
+          document.getElementById('buttonCode').textContent =
+`/* Shake Effect Example */
+@keyframes buttonShake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.effect-button-shake { animation: buttonShake 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-pulse':
+          document.getElementById('buttonCode').textContent =
+`/* Pulse Effect Example */
+@keyframes buttonPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.effect-button-pulse { animation: buttonPulse 1s ease-in-out infinite; }`;
+          break;
+        case 'effect-button-wobble':
+          document.getElementById('buttonCode').textContent =
+`/* Wobble Effect Example */
+@keyframes buttonWobble {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.effect-button-wobble { animation: buttonWobble 1s ease-in-out; }`;
+          break;
+        case 'effect-button-spin':
+          document.getElementById('buttonCode').textContent =
+`/* Spin Effect Example */
+@keyframes buttonSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.effect-button-spin { animation: buttonSpin 1s ease-in-out; }`;
+          break;
+        case 'effect-button-flip':
+          document.getElementById('buttonCode').textContent =
+`/* Flip Effect Example */
+@keyframes buttonFlip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+.effect-button-flip { animation: buttonFlip 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-slide':
+          document.getElementById('buttonCode').textContent =
+`/* Slide Effect Example */
+@keyframes buttonSlide {
+  0% { transform: translateX(-100px); }
+  100% { transform: translateX(0); }
+}
+.effect-button-slide { animation: buttonSlide 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-zoom':
+          document.getElementById('buttonCode').textContent =
+`/* Zoom Effect Example */
+@keyframes buttonZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+.effect-button-zoom { animation: buttonZoom 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-rotate':
+          document.getElementById('buttonCode').textContent =
+`/* Rotate Effect Example */
+@keyframes buttonRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(15deg); }
+}
+.effect-button-rotate { animation: buttonRotate 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-bounceout':
+          document.getElementById('buttonCode').textContent =
+`/* Bounce Out Effect Example */
+@keyframes buttonBounceOut {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+.effect-button-bounceout { animation: buttonBounceOut 1s ease-out; }`;
+          break;
+        case 'effect-button-rubber':
+          document.getElementById('buttonCode').textContent =
+`/* Rubber Band Effect Example */
+@keyframes buttonRubber {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2, 0.9); }
+  100% { transform: scale(1); }
+}
+.effect-button-rubber { animation: buttonRubber 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-swing':
+          document.getElementById('buttonCode').textContent =
+`/* Swing Effect Example */
+@keyframes buttonSwing {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+.effect-button-swing { animation: buttonSwing 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-jello':
+          document.getElementById('buttonCode').textContent =
+`/* Jello Effect Example */
+@keyframes buttonJello {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1, 0.9); }
+  50% { transform: scale(0.9, 1.1); }
+  75% { transform: scale(1.05, 0.95); }
+  100% { transform: scale(1); }
+}
+.effect-button-jello { animation: buttonJello 0.8s ease-in-out; }`;
+          break;
+        case 'effect-button-shimmer':
+          document.getElementById('buttonCode').textContent =
+`/* Shimmer Effect Example */
+@keyframes buttonShimmer {
+  0% { background-position: -200px; }
+  100% { background-position: 200px; }
+}
+.effect-button-shimmer { animation: buttonShimmer 2s linear infinite; }`;
+          break;
+        case 'effect-button-jump':
+          document.getElementById('buttonCode').textContent =
+`/* Jump Effect Example */
+@keyframes buttonJump {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+.effect-button-jump { animation: buttonJump 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-squeeze':
+          document.getElementById('buttonCode').textContent =
+`/* Squeeze Effect Example */
+@keyframes buttonSqueeze {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.8); }
+  100% { transform: scaleX(1); }
+}
+.effect-button-squeeze { animation: buttonSqueeze 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-expand':
+          document.getElementById('buttonCode').textContent =
+`/* Expand Effect Example */
+@keyframes buttonExpand {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+.effect-button-expand { animation: buttonExpand 0.5s ease-in-out; }`;
+          break;
+        case 'effect-button-contract':
+          document.getElementById('buttonCode').textContent =
+`/* Contract Effect Example */
+@keyframes buttonContract {
+  0% { transform: scale(1); }
+  100% { transform: scale(0.8); }
+}
+.effect-button-contract { animation: buttonContract 0.5s ease-in-out; }`;
+          break;
+        default:
+          document.getElementById('buttonCode').textContent = "/* Select a button effect to see the code */";
+      }
+    }
+    function applyImageEffect() {
+      const effect = document.getElementById('imageEffect').value;
+      const img = document.getElementById('previewImage');
+      imageEffects.forEach(cls => img.classList.remove(cls));
+      void img.offsetWidth;
+      img.classList.add(effect);
+      switch(effect) {
+        case 'effect-image-zoom':
+          document.getElementById('imageCode').textContent =
+`/* Zoom Effect Example */
+@keyframes imageZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+.effect-image-zoom { animation: imageZoom 0.5s forwards; }`;
+          break;
+        case 'effect-image-rotate':
+          document.getElementById('imageCode').textContent =
+`/* Rotate Effect Example */
+@keyframes imageRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(15deg); }
+}
+.effect-image-rotate { animation: imageRotate 0.5s forwards; }`;
+          break;
+        case 'effect-image-flip':
+          document.getElementById('imageCode').textContent =
+`/* Flip Effect Example */
+@keyframes imageFlip {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+.effect-image-flip { animation: imageFlip 0.5s forwards; }`;
+          break;
+        case 'effect-image-grayscale':
+          document.getElementById('imageCode').textContent =
+`/* Grayscale Effect Example */
+.effect-image-grayscale {
+  transition: filter 0.5s;
+  filter: grayscale(100%);
+}`;
+          break;
+        case 'effect-image-sepia':
+          document.getElementById('imageCode').textContent =
+`/* Sepia Effect Example */
+@keyframes imageSepia {
+  0% { filter: sepia(0); }
+  100% { filter: sepia(100%); }
+}
+.effect-image-sepia { animation: imageSepia 0.5s forwards; }`;
+          break;
+        case 'effect-image-blur':
+          document.getElementById('imageCode').textContent =
+`/* Blur Effect Example */
+@keyframes imageBlur {
+  0% { filter: blur(0); }
+  100% { filter: blur(3px); }
+}
+.effect-image-blur { animation: imageBlur 0.5s forwards; }`;
+          break;
+        case 'effect-image-contrast':
+          document.getElementById('imageCode').textContent =
+`/* Contrast Effect Example */
+@keyframes imageContrast {
+  0% { filter: contrast(100%); }
+  100% { filter: contrast(150%); }
+}
+.effect-image-contrast { animation: imageContrast 0.5s forwards; }`;
+          break;
+        case 'effect-image-brighten':
+          document.getElementById('imageCode').textContent =
+`/* Brighten Effect Example */
+@keyframes imageBrighten {
+  0% { filter: brightness(100%); }
+  100% { filter: brightness(130%); }
+}
+.effect-image-brighten { animation: imageBrighten 0.5s forwards; }`;
+          break;
+        case 'effect-image-saturate':
+          document.getElementById('imageCode').textContent =
+`/* Saturate Effect Example */
+@keyframes imageSaturate {
+  0% { filter: saturate(100%); }
+  100% { filter: saturate(150%); }
+}
+.effect-image-saturate { animation: imageSaturate 0.5s forwards; }`;
+          break;
+        case 'effect-image-invert':
+          document.getElementById('imageCode').textContent =
+`/* Invert Effect Example */
+@keyframes imageInvert {
+  0% { filter: invert(0); }
+  100% { filter: invert(100%); }
+}
+.effect-image-invert { animation: imageInvert 0.5s forwards; }`;
+          break;
+        case 'effect-image-skew':
+          document.getElementById('imageCode').textContent =
+`/* Skew Effect Example */
+@keyframes imageSkew {
+  0% { transform: skew(0deg); }
+  100% { transform: skew(20deg); }
+}
+.effect-image-skew { animation: imageSkew 0.5s forwards; }`;
+          break;
+        case 'effect-image-tilt':
+          document.getElementById('imageCode').textContent =
+`/* Tilt Effect Example */
+@keyframes imageTilt {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(10deg); }
+}
+.effect-image-tilt { animation: imageTilt 0.5s forwards; }`;
+          break;
+        case 'effect-image-zoomout':
+          document.getElementById('imageCode').textContent =
+`/* Zoom Out Effect Example */
+@keyframes imageZoomOut {
+  0% { transform: scale(1); }
+  100% { transform: scale(0.8); }
+}
+.effect-image-zoomout { animation: imageZoomOut 0.5s forwards; }`;
+          break;
+        case 'effect-image-slidein':
+          document.getElementById('imageCode').textContent =
+`/* Slide In Effect Example */
+@keyframes imageSlideIn {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+.effect-image-slidein { animation: imageSlideIn 0.5s forwards; }`;
+          break;
+        case 'effect-image-slideout':
+          document.getElementById('imageCode').textContent =
+`/* Slide Out Effect Example */
+@keyframes imageSlideOut {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+.effect-image-slideout { animation: imageSlideOut 0.5s forwards; }`;
+          break;
+        case 'effect-image-wobble':
+          document.getElementById('imageCode').textContent =
+`/* Wobble Effect Example */
+@keyframes imageWobble {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+.effect-image-wobble { animation: imageWobble 0.5s forwards; }`;
+          break;
+        case 'effect-image-pulse':
+          document.getElementById('imageCode').textContent =
+`/* Pulse Effect Example */
+@keyframes imagePulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.effect-image-pulse { animation: imagePulse 0.5s forwards; }`;
+          break;
+        case 'effect-image-spin':
+          document.getElementById('imageCode').textContent =
+`/* Spin Effect Example */
+@keyframes imageSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.effect-image-spin { animation: imageSpin 1s forwards; }`;
+          break;
+        default:
+          document.getElementById('imageCode').textContent = "/* Select an image effect to see the code */";
+      }
+    }
+    function copyCode(codeId) {
+      const codeEl = document.getElementById(codeId);
+      const range = document.createRange();
+      range.selectNodeContents(codeEl);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try {
+        document.execCommand('copy');
+        alert('Code copied to clipboard!');
+      } catch (e) {
+        alert('Error copying code.');
+      }
+      sel.removeAllRanges();
+    }
+  </script>
+</body>
+</html>

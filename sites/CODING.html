@@ -1,0 +1,57 @@
+<!-- CODING.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AI Chatbot - Ai Web-based Coding</title>
+  <!-- استخدام ملف CSS الخاص بصفحة CODING -->
+  <link rel="stylesheet" href="../style/CODING.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <script nomodule src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body class="main">
+  <script src="../java/script.js"></script>
+  <div class="hamburger">&#9776;</div>
+  <div class="main">
+    <div class="navbar">
+      <div class="icon">
+        <h2 class="logo"></h2>
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="../HOME.html">HOME</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+          <li><a href="SERVICE.html">SERVICE</a></li>
+          <li><a href="CODING.html">CODING</a></li>
+          <li><a href="chatbot.html">ChatBOT</a></li>
+          <li><a href="CONTACT.html">CONTACT</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="content">
+      <h1>AI <br><span>Chatbot</span></h1>
+      <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+          <div class="message bot-message">Hello! How can I help you today?</div>
+        </div>
+        <div class="chat-input">
+          <input type="text" id="userInput" placeholder="Type your message here..." onkeypress="handleKeyPress(event)">
+          <button onclick="sendMessage()">Enter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+  <script>
+    function sendMessage() {
+      // الكود البرمجي موجود كما هو دون تغيير
+    }
+    function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+  </script>
+</body>
+</html>

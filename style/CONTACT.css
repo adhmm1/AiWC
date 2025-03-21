@@ -1,0 +1,323 @@
+/* إزالة الهوامش الافتراضية وضبط الـ box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* إعدادات أساسية للجسم */
+body {
+  margin: 0;
+  padding-bottom: env(safe-area-inset-bottom);
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding-top: 0%;
+  padding-bottom: 40px;
+  background-color: #000;
+  overflow-x: hidden;
+  font-family: Arial, sans-serif;
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 10001;
+}
+.navbar {
+  height: 30px;
+  margin: 2%;
+  display: flex;
+}
+footer{
+  margin: 0;
+}
+
+/* شريط القائمة العلوية */
+.menu {
+  display: flex;
+  width: 100vw;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+.menu.open {
+  display: flex;
+  /* عند الضغط على زر ☰ تظهر القائمة */
+}
+
+/* عناصر القائمة */
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+ul li a:hover {
+  color: #935ccd;
+}
+
+/* الخلفية الأساسية */
+.main {
+  width: 100vw;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(../img/CoverAi.png);
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-attachment: fixed;
+  margin: 0;
+}
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 10px;
+  color: #fff;
+  
+}
+.icon:hover{
+  color: #dca9fe;
+}
+.link {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+.link:hover{
+  color: #dca9fe;
+}
+.liw {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #fff;
+}
+
+/* حاوية الصفّين: العنوان (يسار) والنموذج (يمين) */
+.content-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rem;
+  margin: 0.4rem;
+  padding: 2rem 6rem;
+  padding-bottom: 0;
+  margin-bottom: 2rem;
+}
+
+/* العمود الأيسر */
+.left-col {
+  color: #fff;
+  text-align: center;
+}
+
+.left-col h1 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+.left-col span {
+  color: #8a2be2;
+  font-size: 3rem;
+}
+
+/* العمود الأيمن */
+.right-col {
+  flex: 1;
+  max-width: 300px;
+  min-width: 300px;
+}
+
+/* حاوية النموذج */
+.form {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.form h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  height: 35px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #8a2be2;
+  color: #fff;
+  font-size: 15px;
+  margin-top: 20px;
+  outline: none;
+}
+
+.form textarea {
+  height: 100px;
+  resize: none;
+}
+
+.form input:focus,
+.form textarea:focus {
+  outline: none;
+}
+
+::placeholder {
+  color: #fff;
+  font-family: Arial;
+}
+
+.btnn {
+  width: 100%;
+  height: 40px;
+  background: #8a2be2;
+  border: none;
+  margin-top: 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #fff;
+  transition: 0.4s ease;
+}
+
+.btnn:hover {
+  background: #dca9fe;
+  color: #8a2be2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  
+  .hamburger {
+    display: block;
+  }
+  .menu {
+    position: relative;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100vh);
+    transition: transform 0.6s ease-in-out;
+    
+}
+
+
+.menu.open {
+    transform: translateY(0);
+    animation: fadeInOpacity 0.6s forwards;
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; 
+
+}
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.menu ul {
+  flex-direction: column;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 35px;
+}
+  ul li {
+    padding: 18px 0;
+    font-size: 35px;
+  }
+  .content-row {
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .left-col,
+  .right-col {
+    flex: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .left-col h1 {
+    margin-bottom: 50px;
+  }
+
+  .form {
+    width: 90%;
+    padding: 15px;
+  }
+  h2{
+    visibility: hidden;
+    font-size: 0px;
+    margin-bottom: 0px;
+  }
+  .form input,
+.form textarea {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+}
+
+@media (max-width: 480px) {
+  .menu ul li {
+    font-size: 25px;
+    padding: 10px 0;
+  }
+
+  .form input,
+  .btnn {
+    width: 100%;
+  }
+
+  .left-col h1 {
+    font-size: 1.8em;
+  }
+}

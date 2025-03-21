@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>محرر كود على نمط VS Code</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url(../img/CoverAi.png);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #d4d4d4;
+    }
+    .toolbar {
+      background-color: #25252688;
+      padding: 15px;
+      text-align: center;
+      border-bottom: 2px solid #3c3c3c;
+      display: flex;
+      justify-content: space-between;
+    }
+    .process-btn{
+        background-color: #5c3e8d;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      border: none;
+      position: relative;
+      color: #fff;
+      padding: 12px ;
+      margin: 10px;
+      margin-left: 50%;
+      margin-right: 60%;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+
+    }
+    .toolbar button {
+      background-color: #5c3e8d;
+      border: none;
+      color: #fff;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    .toolbar button:hover {
+      background-color: #36115e;
+    }
+    .editor-container {
+      width: 80%;
+      margin: 20px auto;
+      height: 400px;
+      border: 2px solid #3c3c3c;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+      overflow: hidden;
+    }
+    #editor {
+      width: 100%;
+      height: 100%;
+      background-color: #1e1e1e;
+      border: none;
+      color: #d4d4d4;
+      padding: 15px;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 16px;
+      resize: none;
+      outline: none;
+      overflow: auto;
+    }
+    .code-section {
+      background-color: #1e1e1e;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      position: relative;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #ffffff;
+      border: none;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button onclick="history.back()"><img src="animation/back.png"height="16px"> </button>
+    <button onclick="formatCode()">press</button>
+  </div>
+  <div class="editor-container">
+    <textarea id="editor" placeholder="print the code here  ..."></textarea>
+   
+  </div>
+  <button class="process-btn" onclick="minifyAndClassifyCode()">Sorting</button>
+  <div id="output">
+    <h2>type of codes :</h2>
+    <div class="code-section">
+      <h3>HTML:</h3>
+      <button class="copy-btn" onclick="copyToClipboard('htmlOutput')"><img src="animation/copy.png" alt="" height="12px"></button>
+      <pre id="htmlOutput"></pre>
+    </div>
+    <div class="code-section">
+      <h3>CSS:</h3>
+      <button class="copy-btn" onclick="copyToClipboard('cssOutput')"><img src="animation/copy.png" alt=""height="12px"></button>
+      <pre id="cssOutput"></pre>
+    </div>
+    <div class="code-section">
+      <h3>JavaScript:</h3>
+      <button class="copy-btn" onclick="copyToClipboard('jsOutput')"><img src="animation/copy.png" alt=""height="12px"></button>
+      <pre id="jsOutput"></pre>
+    </div>
+  </div>
+  <script>
+    function formatCode() {
+      let editor = document.getElementById("editor");
+      let code = editor.value;
+      code = code.split('\n').map(line => line.trim()).join('\n');
+      editor.value = code;
+    }
+    function minifyAndClassifyCode() {
+      let editor = document.getElementById("editor");
+      let code = editor.value.trim();
+      let htmlPart = code;
+      let cssPart = '';
+      let jsPart = '';
+      const styleRegex = /<style[^>]*>([\s\S]*?)<\/style>/i;
+      const scriptRegex = /<script[^>]*>([\s\S]*?)<\/script>/i;
+      if (styleRegex.test(code)) {
+        cssPart = code.match(styleRegex)[1].trim();
+        htmlPart = htmlPart.replace(styleRegex, '');
+      }
+      if (scriptRegex.test(code)) {
+        jsPart = code.match(scriptRegex)[1].trim();
+        htmlPart = htmlPart.replace(scriptRegex, '');
+      }
+      document.getElementById('htmlOutput').textContent = htmlPart;
+      document.getElementById('cssOutput').textContent = cssPart;
+      document.getElementById('jsOutput').textContent = jsPart;
+    }
+    function copyToClipboard(elementId) {
+      let text = document.getElementById(elementId).textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        alert("copied");
+      }).catch(err => {
+        alert("erorr " + err);
+      });
+    }
+  </script>
+</body>
+</html>

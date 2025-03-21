@@ -1,0 +1,281 @@
+/* chatbot.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  text-align: center;
+  background: url('Cover Ai.webp') no-repeat center center/cover;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+.hamburger {
+  display: none;
+  font-size: 28px;
+  color: #fff;
+  cursor: pointer;
+  position: fixed;
+  top: 15px;
+  right: 20px;
+  z-index: 10001;
+}
+.navbar {
+  height: 30px;
+  margin: 4%;
+  display: flex;
+}
+.menu {
+  display: flex;
+  width: 100vw;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(15px);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.menu.open {
+  display: flex;
+  /* عند الضغط على زر ☰ تظهر القائمة */
+}
+.icon {
+  width: 200px;
+  display: flex;
+  height: 70px;
+}
+.logo {
+  color: #8a2be2;
+  font-size: 35px;
+  font-family: Arial;
+  padding-left: 20px;
+  padding-top: 10px;
+  margin-top: 5px;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul li {
+  list-style: none;
+  margin: 0 auto;
+  font-size: 14px;
+  padding: 10px 20px;
+}
+ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: Arial;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+  padding-bottom: 15px;
+}
+ul li a:hover {
+  color: #935ccd;
+}
+.main {
+  width: 100vw;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(../img/CoverAi.png);
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  background-attachment: fixed;
+  margin: 0;
+}
+.container {
+  width: 90%;
+  max-width: 700px;
+  margin: 50px auto;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 15px;
+}
+h2 {
+  margin-bottom: 20px;
+  color: #763aad;
+  font-size: 24px;
+}
+.chat-box {
+  width: 100%;
+  height: 300px;
+  background: #14021a8f;
+  border: 2px solid #9b59b6;
+  border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
+  text-align: left;
+  margin-bottom: 20px;
+  text-align-last:left;
+}
+.chat-message {
+  background: #333;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  max-width: 80%;
+  color: #fff;
+  word-wrap: break-word;
+}
+.user {
+  background: rgba(138, 43, 226, 0.2);
+  text-align: right;
+  margin-left: 20%;
+}
+.bot {
+  background: rgba(255, 255, 255, 0.1);
+  margin-right: 20%;
+}
+option{
+  text-align: left !important;
+  text-align-last:left !important ;
+}
+textarea,
+select,
+button {
+  width: 97%;
+  text-align: left;
+  padding: 12px;
+  margin-top: 10px;
+  font-size: 16px;
+  border: 2px solid #9b59b6;
+  border-radius: 5px;
+  background: #1c0525;
+  color: #fff;
+  transition: all 0.3s ease;
+  resize: none;
+
+}
+textarea:focus,
+select:focus,
+button:focus {
+  border-color: #6d3394;
+  outline: none;
+
+}
+.animate__animated {
+  animation-duration: 1s;
+}
+.loading {
+  display: none;
+  color: #9b59b6;
+  font-size: 14px;
+  margin-top: 10px;
+}
+button {
+  background: #9b59b6;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center !important;
+}
+button:hover {
+  background: #6d3394;
+}
+.loading {
+  display: none;
+  color: #9b59b6;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.animate__animated {
+  animation-duration: 1s;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .menu {
+    position: relative;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100vh);
+    transition: transform 0.6s ease-in-out;
+    
+}
+
+
+.menu.open {
+    transform: translateY(0);
+    animation: fadeInOpacity 0.6s forwards;
+
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    justify-content: center;
+    align-items: center;
+    z-index: 10000; 
+
+}
+@keyframes fadeInOpacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.menu ul {
+  flex-direction: column-reverse;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 35px;
+}
+  ul li {
+    padding: 18px 0;
+    font-size: 35px;
+
+  }
+  .container {
+    width: 95%;
+    padding: 15px;
+    margin: 20px auto;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  .chat-box {
+    height: 250px;
+    padding: 8px;
+  }
+  textarea, select, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+@media (max-width: 480px) {
+  ul li {
+    font-size: 25px;
+    padding: 10px 0;
+  }
+  h2 {
+    font-size: 18px;
+  }
+  .chat-box {
+    height: 220px;
+  }
+  textarea, select, button {
+    font-size: 12px;
+    padding: 8px;
+  }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="../style/CHATBOT.css">
+
+</head>
+<body class="main">
+    <script src="../java/script.js"></script>
+    <div class="hamburger">&#9776;</div>
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"></h2>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="CONTACT.html">CONTACT</a></li>
+                    <li><a href="chatbot.html">ChatBOT</a></li>
+                    <li><a href="CODING.html">CODING</a></li>
+                    <li><a href="SERVICE.html">SERVICE</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="../home.html">HOME</a></li>
+                </ul>
+            </nav>
+        </div> 
+    <div class="container">
+        <h2>AI Chatbot</h2>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message bot animate__animated animate__fadeIn">Hello! How can I assist you?</div>
+        </div>
+        <form id="chatForm">
+            <textarea id="userInput" placeholder="...Type your message here" required></textarea>
+            <select id="language" required class="option">
+                <option value="" disabled selected>Select a Programming Language</option>
+                <option value="C++">C++</option>
+                <option value="Java">Java</option>
+                <option value="PHP">PHP</option>
+                <option value="Python">Python</option>
+            </select>
+            <select id="lang" required>
+                <option value="" disabled selected>Select Language</option>
+                <option value="English">English</option>
+                <option value="Arabic">Arabic</option>
+            </select>
+            <button type="submit">Enter</button>
+        </form>
+        <div class="loading" id="loading">Loading...</div>
+    </div>
+
+    <script>
+        const chatBox = document.getElementById('chatBox');
+        const chatForm = document.getElementById('chatForm');
+        const userInput = document.getElementById('userInput');
+        const loading = document.getElementById('loading');
+
+        chatForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const message = userInput.value.trim();
+
+            if (message !== '') {
+
+                const userDiv = document.createElement('div');
+                userDiv.className = 'chat-message user animate__animated animate__fadeInRight';
+                userDiv.textContent = message;
+                chatBox.appendChild(userDiv);
+
+                loading.style.display = 'block';
+
+                setTimeout(() => {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'chat-message bot animate__animated animate__fadeInLeft';
+                    botDiv.textContent = getBotResponse(message);
+                    chatBox.appendChild(botDiv);
+
+                    loading.style.display = 'none';
+
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 1500);
+
+                userInput.value = '';
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+        });
+
+        function getBotResponse(message) {
+            const selectedLang = document.getElementById('lang').value;
+            message = message.toLowerCase();
+
+            if (selectedLang === 'English') {
+                if (message.includes('hello') || message.includes('hi')) {
+                    return 'Hello! How can I assist you?';
+                } else if (message.includes('how are you')) {
+                    return 'I\'m doing well, thank you for asking! How can I help you?';
+                } else if (message.includes('bye')) {
+                    return 'Goodbye! Have a great day!';
+                } else if (message.includes('help')) {
+                    return 'I can help you with information about our services, coding assistance, or general queries. What would you like to know?';
+                } else {
+                    return 'I\'m still learning. Could you please rephrase your question?';
+                }
+            } else if (selectedLang === 'Arabic') {
+                if (message.includes('مرحبا') || message.includes('اهلا')) {
+                    return 'مرحباً! كيف يمكنني مساعدتك؟';
+                } else if (message.includes('ما هو نادي الهلال السعودي')) {
+                    return 'عشق تناما من سنين الطفولة';
+                } else if (message.includes('كيف حالك')) {
+                    return 'أنا بخير، شكراً لسؤالك! كيف يمكنني مساعدتك؟';
+                } else if (message.includes('وداعا')) {
+                    return 'وداعاً! أتمنى لك يوماً سعيداً!';
+                } else {
+                    return 'أنا ما زلت أتعلم. هل يمكنك إعادة صياغة سؤالك؟';
+                }
+            }
+        }
+
+    </script>
+
+</body>
+</html>

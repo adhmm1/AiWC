@@ -5,12 +5,11 @@
   box-sizing: border-box;
 }
 body {
-  padding-top: 5%;
-  padding-bottom: 40px;
+  min-height: 100vh;
   background-color: #000;
-  overflow-x: hidden;
-  width: 100%;
   font-family: Arial, sans-serif;
+  margin: 0%;
+  padding-bottom: 40px;
 }
 .hamburger {
   display: none;
@@ -23,17 +22,15 @@ body {
   z-index: 10001;
 }
 .navbar {
-  height: 30px;
-  margin: 10px;
+  height: 40px;
   display: flex;
 }
+
 .menu {
   display: flex;
-  width: 100vw;
-  height: 55px;
+  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   justify-content: center;
@@ -41,6 +38,7 @@ body {
   align-items: center;
   z-index: 1000;
 }
+
 .menu.open {
   display: flex;
   /* عند الضغط على زر ☰ تظهر القائمة */
@@ -63,22 +61,26 @@ ul {
   justify-content: center;
   align-items: center;
 }
+ul {
+  display: flex;
+  justify-content: center;
+}
 ul li {
   list-style: none;
-  margin: 0 auto;
+  margin: 1 1.4vw;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 2% ;
 }
 ul li a {
   text-decoration: none;
   color: #fff;
   font-family: Arial;
   font-weight: bold;
-  transition: 0.2s ease-in-out;
-  padding-bottom: 15px;
+  transition: 0.3s ease-in-out;
+  padding: 15px;
 }
 ul li a:hover {
-  color: #935ccd;
+  color: #a474d6;
 }
 .main {
   width: 100vw;

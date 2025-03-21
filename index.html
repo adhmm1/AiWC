@@ -1,35 +1,26 @@
-<!-- home.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Ai Web-based Coding</title>
   <link rel="stylesheet" href="style/HOME.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 </head>
 <body class="main">
-
+  <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
 <div> 
   <video class="video-background" autoplay muted loop playsinline>
-    <!-- تأكد من أن الفيديو موجود في نفس المجلد أو قم بتحديد المسار الصحيح -->
     <source src="img/lplp.mp4" type="video/mp4">
     <source src="img/lplp.webm" type="video/webm">
-    <source src="img/lplp.ogg" type="video/ogg">
-    متصفحك لا يدعم الفيديو.
   </div>
   </video>
   <script src="java/script.js"></script>
   <div class="hamburger">&#9776;</div>
-  
     <div class="navbar">
-      <div class="icon">
-        <h2 class="logo"></h2>
-      </div>
       <div class="menu">
         <div class="menu open">
           <ul>
-            <li><a href="HOME.html">HOME</a></li>
+            <li><a href="index.html">HOME</a></li>
             <li><a href="sites/about.html">ABOUT</a></li>
             <li><a href="sites/SERVICE.html">SERVICE</a></li>
             <li><a href="sites/CODING.html">CODING</a></li>
@@ -46,18 +37,22 @@
       <div class="right-col form">
         <h2>Login Here</h2>
         <input type="email" name="email" placeholder="Enter Email Here">
-        <input type="password" name="password" placeholder="Enter Password Here">
+        <div class="password-container">
+          <input type="password" id="password" placeholder=" Enter Password Here ">
+          <img id="toggleIcon" src="img/eye-off.png" alt="عرض" onclick="togglePassword()">
+        </div>
         <button class="btnn"><a href="#">Login</a></button><br><br>
-      </br><p >Don't have an account?</p>
-          <a href="sites/sign_up.html" class="link">Sign up here</a>
-        
-        <p class="liw">Log in with</p>
+          <p >Don't have an account?</p>
+          <a href="sites/sign_up.html" class="liw">Sign up here</a>
+        <p class="liw">or log in with:</p>
         <div class="icons">
-          <a href="https://www.instagram.com" class="link"><ion-icon name="logo-instagram"></ion-icon></a>
-          <a href="https://www.x.com" class="link"><ion-icon name="logo-twitter"></ion-icon></a>
+          <a href="https://www.instagram.com" class="link"><ion-icon name="logo-google"></ion-icon></a>
+          <a href="https://www.x.com" class="link"><ion-icon name="logo-apple"></ion-icon></a>
         </div>
       </div>
     </div>
-  
+  </div>
+</div>
+</div>
 </body>
 </html>

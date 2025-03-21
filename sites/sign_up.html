@@ -6,10 +6,9 @@
   <link rel="stylesheet" href="../style/HOME.css">
   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
 </head>
 <body class="main">
-  <script src="../java/script.js"></script>
+  <script src=></script>
   <div class="hamburger">&#9776;</div>
   <div class="main">
     <div class="navbar">
@@ -19,7 +18,7 @@
       <div class="menu">
         <div class="menu open">
           <ul>
-            <li><a href="../home.html">HOME</a></li>
+            <li><a href="../index.html">HOME</a></li>
             <li><a href="about.html">ABOUT</a></li>
             <li><a href="SERVICE.html">SERVICE</a></li>
             <li><a href="CODING.html">CODING</a></li>
@@ -32,7 +31,6 @@
     <div class="content-row">
       <div class="left-col">
         <h1>Ai <br><span>WebBased</span> <br>Coding</h1>
-     
       </div>
       <div class="right-col">
         <div class="signup-container">
@@ -40,12 +38,14 @@
           <form action="#" method="post" id="signupForm">
             <input type="text" name="username" placeholder="Enter Your Username" required>
             <input type="email" name="email" placeholder="Enter Your Email" required>
-            <input type="password" name="password" placeholder="Enter Password" required>
+            <div class="password-container">
+              <input type="password" id="password" placeholder=" Enter Password Here ">
+              <img id="toggleIcon" src="../img/eye-off.png" alt="عرض" onclick="togglePassword()">
+            </div>
             <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
             <button type="submit">Sign Up</button>
           </form>
-        
-          <p>Already have an account?</p><a href="../HOME.html"> Login</a>
+          <br><br><p>Already have an account?</p><a href="../index.html"> Login</a>
         </div>
       </div>
     </div>
@@ -59,6 +59,40 @@
         event.preventDefault();
       }
     });
+    function median_library_ready(){
+    median_match_system_navbar_to_body_background_color();
+  }
+  function togglePassword() {
+    let passwordInput = document.getElementById("password");
+    let icon = document.getElementById("toggleIcon");
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.src = "../img/eye-on.png"; // الصورة عند إخفاء الباسوورد
+    } else {
+      passwordInput.type = "password";
+      icon.src = "../img/eye-off.png"; // الصورة عند إظهار الباسووردs
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function() {
+    let menu = document.querySelector(".menu");
+    let hamburger = document.querySelector(".hamburger");
+
+    if (hamburger && menu) {
+        hamburger.addEventListener("click", function() {
+            menu.classList.toggle("open");
+        });
+
+        document.addEventListener("click", function(event) {
+            if (!menu.contains(event.target) && !hamburger.contains(event.target)) {
+                menu.classList.remove("open");
+            }
+        });
+    } else {
+        console.error("العناصر غير موجودة في الـ HTML!");
+    }
+});
+  
   </script>
 </body>
 </html>

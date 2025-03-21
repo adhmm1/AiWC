@@ -19,3 +19,15 @@ document.addEventListener("DOMContentLoaded", function() {
 function median_library_ready(){
     median_match_system_navbar_to_body_background_color();
   }
+  function togglePassword() {
+    let passwordInput = document.getElementById("password");
+    let icon = document.getElementById("toggleIcon");
+  
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      icon.src = "img/eye-on.png"; // الصورة عند إخفاء الباسوورد
+    } else {
+      passwordInput.type = "password";
+      icon.src = "img/eye-off.png"; // الصورة عند إظهار الباسووردs
+    }
+  } 

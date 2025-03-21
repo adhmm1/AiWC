@@ -1,29 +1,21 @@
-/* home.css */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  margin: 0;
-  padding-bottom: env(safe-area-inset-bottom);
   min-height: 100vh;
-  box-sizing: border-box;
-  padding-top: 0%;
-  padding-bottom: 40px;
   background-color: #000;
-  overflow-x: hidden;
   font-family: Arial, sans-serif;
-  overflow: hidden;
+  margin: 0%;
+  padding-bottom: 40px;
 }
 .video-background {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* لجعل الفيديو في الخلف */
+  z-index: -1; 
 }
 .hamburger {
   display: none;
@@ -36,64 +28,46 @@ body {
   z-index: 10001;
 }
 .navbar {
-  height: 30px;
-  margin: 2%;
+  height: 40px;
   display: flex;
 }
-footer{
-  margin: 0;
-}
+
 .menu {
   display: flex;
-  width: 100vw;
-  height: 55px;
+  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   justify-content: center;
   display: flex;
   align-items: center;
   z-index: 1000;
 }
-.menu.open {
-  display: flex;
-  /* عند الضغط على زر ☰ تظهر القائمة */
-}
 
-/* توزيع العمودين أفقيًا */
 .content-row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12rem;
-  margin: 0.4rem; /* حتى لا يختفي خلف شريط التنقل الثابت */
-  padding: 2rem 6rem;  /* حواف جانبية */
-  padding-bottom:0;
-  margin-bottom: 2rem;
+  gap: 27vw;
+  padding: 2rem 4rem; 
+  margin: 2.0%;
 }
-/* العنوان */
 .left-col h1 {
   font-size: 2.5rem;
-  line-height: 1.2;
   color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 4);
 }
-
 .left-col span {
-  color: #552681;
+  color: #9653d0;
   font-size: 3rem;
-  
+  text-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 4);
 }
-
-/* العمود الثاني (النموذج) */
 .right-col {
-  flex: 1;
   max-width: 300px;
   min-width: 300px;
-
+  width: auto;
+  height: auto;
 }
-/* تنسيق العنوان */
 .content h1 {
   font-size: 2.5rem;
   margin-bottom: 0;
@@ -104,41 +78,32 @@ footer{
   border-width: 3px;
 }
 
-
-.icon {
-  width: 200px;
-  display: flex;
-  height: 70px;
-}
 .logo {
   color: #8a2be2;
   font-size: 35px;
   font-family: Arial;
-  padding-left: 20px;
-  padding-top: 10px;
   margin-top: 5px;
 }
 ul {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 ul li {
   list-style: none;
-  margin: 0 auto;
+  margin: 1 1.4vw;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 2% ;
 }
 ul li a {
   text-decoration: none;
   color: #fff;
   font-family: Arial;
   font-weight: bold;
-  transition: 0.2s ease-in-out;
-  padding-bottom: 15px;
+  transition: 0.3s ease-in-out;
+  padding: 15px;
 }
 ul li a:hover {
-  color: #935ccd;
+  color: #a474d6;
 }
 .main {
   position: relative;
@@ -151,38 +116,43 @@ ul li a:hover {
   gap: 2rem;
   margin-top: 10px;
   color: #fff;
-  
 }
 .icon:hover{
   color: #dca9fe;
 }
 .link {
-  margin-top: 10px;
-  font-size: 14px;
+  margin-top: 15px;
+  font-size: 30px;
+  margin-left: auto;
+  margin-right: auto;
   color: #fff;
 }
 .link:hover{
-  color: #dca9fe;
+  color: #c27fef;
 }
 .liw {
-  margin-top: 10px;
+  margin: 20px;
   font-size: 14px;
   color: #fff;
 }
+.liw :hover{
+  color: #935ccd;
+}
 .form {
   background: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+  border-radius: 30px;
   padding: 20px;
-  color: #fff;
+  color: #ffffffbf;
   text-align: center;
+  border: 5px solid #a665e72b;
 }
-
 .form h2 {
   text-align: center;
   color: #fff;
   margin-bottom: 15px;
 }
-.form input {
+.form input,
+.form textarea {
   width: 100%;
   height: 35px;
   background: transparent;
@@ -191,16 +161,29 @@ ul li a:hover {
   color: #fff;
   font-size: 15px;
   margin-top: 20px;
-}
-.form input:focus {
   outline: none;
 }
+
+.form input:focus ,
 .form input:focus {
   outline: none;
 }
 ::placeholder {
-  color: #fff;
+  color: #ffffff57;
   font-family: Arial;
+}
+.password-container {
+  position: relative;
+}
+
+
+.password-container img {
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  transform: translateY(-50%);
+  width: 25px;
+  cursor: pointer;
 }
 .btnn {
   width: 100%;
@@ -218,26 +201,21 @@ ul li a:hover {
   background: #dca9fe;
   color: #8a2be2;
 }
-
 .btnn a {
   text-decoration: none;
   color: #000;
   font-weight: bold;
 }
 .signup-container {
-  max-width: 400px;
-  margin: 10px auto;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
   padding: 20px;
-  color: #fff;
+  color: #ffffffbf;
   text-align: center;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
+  border: 5px solid #a665e72b;
 }
 .signup-container h2 {
   margin-bottom: 20px;
- 
 }
 .signup-container input {
   width: 100%;
@@ -257,8 +235,9 @@ ul li a:hover {
   background: #8a2be2;
   border: none;
   border-radius: 5px;
-  color: #fff;
-  font-size: 16px;
+  color: #200909;
+  font-weight: bold;
+  font-size: 18px;
   cursor: pointer;
   margin-top: 20px;
 }
@@ -266,13 +245,11 @@ ul li a:hover {
   background: #dca9fe;
 }
 .signup-container a {
-  color: #935ccd;
+  color: #ffffff;
   text-decoration: none;
   display: inline-block;
   margin-top: 15px;
 }
-
-/* Responsive */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -290,14 +267,10 @@ ul li a:hover {
     align-items: center;
     transform: translateY(-100vh);
     transition: transform 0.6s ease-in-out;
-    
 }
-
-
 .menu.open {
     transform: translateY(0);
     animation: fadeInOpacity 0.6s forwards;
-
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -309,7 +282,6 @@ ul li a:hover {
     justify-content: center;
     align-items: center;
     z-index: 10000; 
-
 }
 @keyframes fadeInOpacity {
   from {
@@ -331,8 +303,13 @@ ul li a:hover {
   }
   .content-row {
     flex-direction: column;
-    gap: 1rem; /* تقليل الفجوة بين الأعمدة */
+    gap: 1rem;
     margin-top: 2rem;
+    align-items: center;
+  }
+  h1{
+    margin-left: 20%;
+    margin-right: 130%;
   }
   .left-col,
   .right-col {
@@ -342,25 +319,11 @@ ul li a:hover {
     margin-bottom: 5px;
   }
   .left-col h1 {
-    margin-bottom: 50px; /* تقليل الهامش بين h1 والنموذج */
+    margin-bottom: 10%; 
   }
-
   .form {
     width: 90%;
 
     padding: 15px;
-  }
-  
-}
-@media (max-width: 480px) {
-  ul li {
-    font-size: 25px;
-    padding: 10px 0;
-  }
-  .form input, .btnn {
-    width: 100%;
-  }
-  .content h1 {
-    font-size: 1.8em;
   }
 }

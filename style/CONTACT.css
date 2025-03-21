@@ -28,58 +28,44 @@ body {
   z-index: 10001;
 }
 .navbar {
-  height: 30px;
-  margin: 2%;
+  height: 40px;
   display: flex;
-}
-footer{
-  margin: 0;
 }
 
-/* شريط القائمة العلوية */
 .menu {
   display: flex;
-  width: 100vw;
-  height: 55px;
+  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(5px);
   justify-content: center;
   display: flex;
   align-items: center;
   z-index: 1000;
-}
-.menu.open {
-  display: flex;
-  /* عند الضغط على زر ☰ تظهر القائمة */
 }
 
 /* عناصر القائمة */
 ul {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
-
 ul li {
   list-style: none;
-  margin: 0 auto;
+  margin: 1 1.4vw;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 2% ;
 }
-
 ul li a {
   text-decoration: none;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: Arial;
   font-weight: bold;
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
+  padding: 15px;
 }
-
 ul li a:hover {
-  color: #935ccd;
+  color: #a474d6;
 }
 
 /* الخلفية الأساسية */
@@ -120,30 +106,35 @@ ul li a:hover {
 /* حاوية الصفّين: العنوان (يسار) والنموذج (يمين) */
 .content-row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 12rem;
-  margin: 0.4rem;
-  padding: 2rem 6rem;
-  padding-bottom: 0;
-  margin-bottom: 2rem;
+  gap: 27vw;
+  padding: 2rem 4rem; 
+  margin: 2.0%;
 }
-
-/* العمود الأيسر */
-.left-col {
-  color: #fff;
-  text-align: center;
-}
-
 .left-col h1 {
   font-size: 2.5rem;
-  line-height: 1.2;
+  color: #fff;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 4);
+}
+.left-col span {
+  color: #9653d0;
+  font-size: 3rem;
+  text-shadow: 3px 3px 5px 3px rgba(0, 0, 0, 4);
+}
+.right-col {
+  max-width: 300px;
+  min-width: 300px;
+  width: auto;
+  height: auto;
+}
+.content h1 {
+  font-size: 2.5rem;
   margin-bottom: 0;
 }
-
-.left-col span {
+.content span {
   color: #8a2be2;
-  font-size: 3rem;
+  border-color: #000;
+  border-width: 3px;
 }
 
 /* العمود الأيمن */
@@ -155,11 +146,12 @@ ul li a:hover {
 
 /* حاوية النموذج */
 .form {
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
   padding: 20px;
-  color: #fff;
+  color: #ffffffbf;
   text-align: center;
+  border: 5px solid #a665e72b;
 }
 
 .form h2 {
@@ -181,10 +173,6 @@ ul li a:hover {
   outline: none;
 }
 
-.form textarea {
-  height: 100px;
-  resize: none;
-}
 
 .form input:focus,
 .form textarea:focus {
@@ -192,7 +180,7 @@ ul li a:hover {
 }
 
 ::placeholder {
-  color: #fff;
+  color: #ffffff57;
   font-family: Arial;
 }
 
@@ -211,12 +199,11 @@ ul li a:hover {
 
 .btnn:hover {
   background: #dca9fe;
-  color: #8a2be2;
+  color: #19141e;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  
   .hamburger {
     display: block;
   }
@@ -233,14 +220,10 @@ ul li a:hover {
     align-items: center;
     transform: translateY(-100vh);
     transition: transform 0.6s ease-in-out;
-    
 }
-
-
 .menu.open {
     transform: translateY(0);
     animation: fadeInOpacity 0.6s forwards;
-
     width: 100vw;
     height: 100vh;
     position: fixed;
@@ -252,7 +235,6 @@ ul li a:hover {
     justify-content: center;
     align-items: center;
     z-index: 10000; 
-
 }
 @keyframes fadeInOpacity {
   from {
@@ -276,8 +258,17 @@ ul li a:hover {
     flex-direction: column;
     gap: 1rem;
     margin-top: 2rem;
+    align-items: center;
   }
-
+  h1{
+    margin-left: 20%;
+    margin-right: 130%;
+  }
+  h2{
+    visibility: hidden;
+    font-size: 0px;
+    margin-bottom: 0px;
+  }
   .left-col,
   .right-col {
     flex: none;
@@ -285,39 +276,12 @@ ul li a:hover {
     text-align: center;
     margin-bottom: 5px;
   }
-
   .left-col h1 {
-    margin-bottom: 50px;
+    margin-bottom: 10%; 
   }
-
   .form {
     width: 90%;
+
     padding: 15px;
-  }
-  h2{
-    visibility: hidden;
-    font-size: 0px;
-    margin-bottom: 0px;
-  }
-  .form input,
-.form textarea {
-  margin-top: 0px;
-  margin-bottom: 20px;
-}
-}
-
-@media (max-width: 480px) {
-  .menu ul li {
-    font-size: 25px;
-    padding: 10px 0;
-  }
-
-  .form input,
-  .btnn {
-    width: 100%;
-  }
-
-  .left-col h1 {
-    font-size: 1.8em;
   }
 }

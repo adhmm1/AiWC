@@ -8,8 +8,8 @@ body {
   font-family: 'Tajawal', sans-serif;
   background-color: #f8f9fa;
   text-align: center;
-  margin: 0;
-  padding: 0;
+  margin: 0%;
+  padding-bottom: 40px;
 }
 .hamburger {
   display: none;
@@ -22,17 +22,14 @@ body {
   z-index: 10001;
 }
 .navbar {
-  height: 30px;
-  margin: 4%;
+  height: 40px;
   display: flex;
 }
 .menu {
   display: flex;
-  width: 100vw;
-  height: 55px;
+  width: 100%;
   position: fixed;
   top: 0;
-  left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
   justify-content: center;
@@ -40,54 +37,36 @@ body {
   align-items: center;
   z-index: 1000;
 }
-.menu.open {
-  display: flex;
-  /* عند الضغط على زر ☰ تظهر القائمة */
-}
-
-.icon {
-  width: 200px;
-  display: flex;
-  height: 70px;
-}
-.logo {
-  color: #8a2be2;
-  font-size: 35px;
-  font-family: Arial;
-  padding-left: 20px;
-  padding-top: 10px;
-  margin-top: 5px;
-}
 ul {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 ul li {
   list-style: none;
-  margin: 0 auto;
+  margin: 1 1.4vw;
   font-size: 14px;
-  padding: 10px 20px;
+  padding: 2% ;
 }
 ul li a {
   text-decoration: none;
   color: #fff;
   font-family: Arial;
   font-weight: bold;
-  transition: 0.2s ease-in-out;
-  padding-bottom: 15px;
+  transition: 0.3s ease-in-out;
+  padding: 15px;
 }
 ul li a:hover {
   color: #935ccd;
 }
 .main {
   width: 100vw;
-  background: linear-gradient(to top, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.5) 50%), url(../img/CoverAi.png);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(../img/CoverAi.png);
   background-position: center;
   background-size: cover;
   height: 100vh;
   background-attachment: fixed;
-  margin: 0;
+  overflow: auto;
+  margin-top: 20px;
 }
 .image-container {
   display: flex;

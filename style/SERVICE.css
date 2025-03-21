@@ -190,15 +190,3 @@ h1{
     font-size: 3.5vw;
   }
 }
-@media (max-width: 480px) {
-  ul li {
-    font-size: 25px;
-    padding: 10px 0;
-  }
-  .image-box {
-    width: 90%;
-  }
-  .image-box p {
-    font-size: 4vw;
-  }
-}

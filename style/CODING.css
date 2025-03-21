@@ -237,16 +237,3 @@ span{
     width: 20%;
   }
 }
-@media (max-width: 480px) {
-  ul li {
-    font-size: 25px;
-    padding: 10px 0;
-  }
-  .chat-input input,
-  .chat-input button {
-    font-size: 14px;
-  }
-  .chat-box {
-    height: 250px;
-  }
-}

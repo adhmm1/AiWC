@@ -266,19 +266,3 @@ button:hover {
     padding: 10px;
   }
 }
-@media (max-width: 480px) {
-  ul li {
-    font-size: 25px;
-    padding: 10px 0;
-  }
-  h2 {
-    font-size: 18px;
-  }
-  .chat-box {
-    height: 220px;
-  }
-  textarea, select, button {
-    font-size: 12px;
-    padding: 8px;
-  }
-}

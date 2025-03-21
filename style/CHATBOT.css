@@ -238,7 +238,7 @@ button:hover {
   }
 }
 .menu ul {
-  flex-direction: column-reverse;
+  flex-direction: column;
   text-align: center;
   padding: 18px 0;
   font-size: 35px;
@@ -246,7 +246,7 @@ button:hover {
   ul li {
     padding: 18px 0;
     font-size: 35px;
-
+    
   }
   .container {
     width: 95%;

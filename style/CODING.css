@@ -214,6 +214,8 @@ span{
 .menu ul {
   flex-direction: column;
   text-align: center;
+  padding: 18px 0;
+  font-size: 35px;
 }
   ul li {
     padding: 18px 0;

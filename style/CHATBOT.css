@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 body {
+  min-height: 100vh;
   font-family: Arial, sans-serif;
   direction: rtl;
   text-align: center;

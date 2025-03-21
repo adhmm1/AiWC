@@ -5,6 +5,7 @@
   box-sizing: border-box;
 }
 body {
+  min-height: 100vh;
   font-family: 'Tajawal', sans-serif;
   background-color: #f8f9fa;
   text-align: center;

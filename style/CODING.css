@@ -83,7 +83,7 @@ ul li a:hover {
   color: #a474d6;
 }
 .main {
-  width: 100vw;
+  width: 100%;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 50%), url(../img/CoverAi.png);
   background-position: center;
   background-size: cover;

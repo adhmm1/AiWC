@@ -7,7 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
   <style>
     /* Global Reset & Base Styles */
-    * { box-sizing: border-box; }
+    * { color: #ffffff;
+        box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
@@ -21,20 +22,16 @@
 
     /* Global Back Button */
     .global-back-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      padding: 6px 10px;
-      height: 10px 10px;
-      background-color: #edcaf7;
-      color: rgb(50, 4, 63);
+background-color: #5c3e8d;
       border: none;
-      border-radius: 25px;
+      color: #fff;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 6px;
       cursor: pointer;
-      z-index: 1100;
-      transition: background-color 0.3s;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
     }
-    .global-back-btn:hover { background-color: #b68fed; }
 
     /* Main Menu */
     .main-menu {
@@ -51,9 +48,9 @@
       margin: 10px;
       font-size: 1.2rem;
       border: none;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      background-color: #572665;
+      background-color: #57266599;
       color: white;
       transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -69,17 +66,18 @@
       display: none;
       animation: slideIn 0.8s ease-out;
       max-width: 1000px;
-      margin: 20px auto;
+      margin: 35px auto;
       padding: 20px;
-      background: #fff;
-      border-radius: 8px;
+      background: #19021a57;
+      border-radius: 30px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border: 5px solid #a665e72b;
     }
     .section.active { display: block; }
     .section h2 {
       font-size: 2rem;
       text-align: center;
-      color: #19226c;
+      color: #935ccd;
       margin-bottom: 20px;
     }
     .section p {
@@ -91,13 +89,13 @@
     .back-btn {
       display: block;
       margin: 10px auto;
-      padding: 4px 8px;
+      padding: 7px 13px;
       background-color: #451a51;
       color: white;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       transition: background-color 0.3s;
     }
     .back-btn:hover { background-color: #6e3c7c; }
@@ -109,9 +107,10 @@
       max-width: 500px;
       padding: 10px;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border: 3px solid #a665e72b;
+      border-radius: 10px;
       margin-bottom: 10px;
+      background: #2a0b354f;
     }
     .text-section button.action-btn {
       padding: 10px 10px;
@@ -133,8 +132,9 @@
     .image-section select {
       padding: 8px;
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 7px;
+      border: 2.4px solid #a665e72b;
+      background: #2a0b354f;
     }
     .text-section .output { text-align: center; margin: 20px 0; font-size: 1.2rem; min-height: 40px; }
     
@@ -144,10 +144,10 @@
       margin: 20px auto;
       padding: 15px 30px;
       font-size: 1.1rem;
-      background-color: #999999;
+      background-color: #66576d;
       border: none;
       color: rgb(255, 255, 255);
-      border-radius: 5px;
+      border-radius: 8px;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -244,7 +244,7 @@
     /* 20 Unique Button Animation Effects */
     @keyframes buttonBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     .effect-button-bounce { animation: buttonBounce 1s ease-out infinite; }
-    @keyframes buttonGlow { 0% { box-shadow: 0 0 0px #4CAF50; } 50% { box-shadow: 0 0 20px #4CAF50; } 100% { box-shadow: 0 0 0px #4CAF50; } }
+    @keyframes buttonGlow { 0% { box-shadow: 0 0 0px #952fbf; } 50% { box-shadow: 0 0 20px #952fbf; } 100% { box-shadow: 0 0 0px #952fbf; } }
     .effect-button-glow { animation: buttonGlow 2s ease-in-out infinite; }
     @keyframes buttonShake { 0% { transform: translateX(0); } 25% { transform: translateX(-5px); } 50% { transform: translateX(5px); } 75% { transform: translateX(-5px); } 100% { transform: translateX(0); } }
     .effect-button-shake { animation: buttonShake 0.5s ease-in-out; }
@@ -330,7 +330,7 @@
 </head>
 <body>
   <!-- Global Back Button -->
-  <button class="global-back-btn" onclick="window.history.back()"><img src="back.png" alt="back"; height="13px";width="20px"; ></button>
+  <button class="global-back-btn" onclick="history.back()"><img src="back.png" alt="back"; height="13px";width="20px"; ></button>
 
   <!-- Main Content -->
   <div class="main-content">
@@ -440,6 +440,7 @@
 }
 .effect-button-bounce { animation: buttonBounce 1s ease-out infinite; }
 </pre>
+
         <button class="copy-btn" onclick="copyCode('buttonCode')"><img src="copy.png" alt="copy" style="height: 20px;width: 20px;"></button>
       </div>
     </div>
@@ -792,9 +793,9 @@
           document.getElementById('buttonCode').textContent =
 `/* Glow Effect Example */
 @keyframes buttonGlow {
-  0% { box-shadow: 0 0 0px #4CAF50; }
-  50% { box-shadow: 0 0 20px #4CAF50; }
-  100% { box-shadow: 0 0 0px #4CAF50; }
+  0% { box-shadow: 0 0 0px #952fbf; }
+  50% { box-shadow: 0 0 20px #952fbf; }
+  100% { box-shadow: 0 0 0px #952fbf; }
 }
 .effect-button-glow { animation: buttonGlow 2s ease-in-out infinite; }`;
           break;
